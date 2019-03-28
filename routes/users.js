@@ -5,7 +5,7 @@ const common = require('../config/common')
 
 /* GET users listing. */
 router.get('/test', function(req, res, next) {
-  res.json({test: ource'respond with a resource'});
+  res.json({test: 'source respond with a resource'});
 });
 
 /* Insert a customer. */
