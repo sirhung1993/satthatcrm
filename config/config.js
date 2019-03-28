@@ -1,5 +1,6 @@
 'use strict'
 module.exports = {
+    dateFormat: 'DD-MM-YYYY',
     CRM : {
         host: (process.env.DB_HOST) ?  process.env.DB_HOST : 'localhost',
         port: (process.env.DB_PORT) ?  process.env.DB_PORT : '3306',
@@ -12,5 +13,5 @@ module.exports = {
         process.env.DB_OUTPUT_IS_ARRAY : false,
         timezone: (process.env.DB_TIMEZONE !== undefined) ? process.env.DB_TIMEZONE : 'local',
         dateStrings: true
-    }
+    },
 }
