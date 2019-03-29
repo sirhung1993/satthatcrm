@@ -7,6 +7,10 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
+app.use((req, res, next) => {
+    res.append('Access-Control-Allow-Origin', ['*'])
+    next()
+})
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

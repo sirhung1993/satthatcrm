@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8"/>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<div>
+	<div class="w3-row ">
+		  <div class="w3-third w3-container">
+		  	<label>Họ và tên</label>
+		  	<input class="w3-input w3-light-grey w3-border w3-border-red" type="text" id="contact-name" >
+		  </div>
+		  <div class="w3-third w3-container">
+		  	<label>Số điện thoại</label>
+		  	<input class="w3-input w3-light-grey w3-border w3-border-red" type="text" id="contact-phone">
+		  </div>	
+		  <div class="w3-third w3-container">
+		  	<label>Địa chỉ</label>
+		  	<input class="w3-input w3-light-grey w3-border w3-border-red" type="text" id="contact-address">
+		</div>
+		<div class="w3-row">
+			<div class="w3-third w3-container"></div>
+			<button class="w3-button w3-red w3-round w3-large w3-third w3-text-white w3-hover w3-hover-blue" id="submit-contact"> Tôi muốn mua </button>
+			<div class="w3-third w3-container"></div>
+		</div>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+	</script>
+	<script type="text/javascript">
+	$.urlParam = function (name) {
+    	var results = new RegExp('[\?&]' + name + '=([^&#]*)')
+          .exec(window.location.search);
+
+    	return (results !== null) ? results[1] || 0 : false;
+	}
+
+	$("#submit-contact").click(function() {
+		const satCrmInsertContact = 'http://localhost:3000/users/insertContact'
+		const name = $("#contact-name").val()
+		const phone = $("#contact-phone").val()
+		const address = $("#contact-address").val()
+   		const source = $.urlParam('utm_source')
+		const medium = $.urlParam('utm_medium')
+		const content = $.urlParam('utm_content')
+		$.post(satCrmInsertContact, 
+		{
+			name: name,
+			phone: phone,
+			address: address,
+			sourceId: source,
+			medium: medium,
+			content: content
+		}, function(data, status) {
+			console.log(`data : ${data}`)
+			console.log(`status : ${status}`)
+		})
+		console.log(`NAME : ${name}`)
+		console.log(`PHONE : ${phone}`)
+		console.log(`address : ${address}`)
+	})
+	</script>
+</div>
